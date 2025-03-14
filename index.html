@@ -43,6 +43,14 @@
     </style>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
+            // Configuration des matériaux
+            const materialConfig = {
+                "Pomme": "pomme.png",
+                "Carotte": "carotte.png",
+                "Viande": "viande.png",
+                "Pain": "pain.png"
+            };
+
             // Configuration des stocks avec catégories
             const stockConfig = [
                 {
@@ -68,6 +76,30 @@
                     prix: "2 pièces d'or",
                     utility: "Snack",
                     image: "pomme.png"
+                },
+                {
+                    category: "Plats",
+                    type: "Ragoût de viande",
+                    status: 1,
+                    mat1: "Viande",
+                    mat2: "Carotte",
+                    mat3: "Pain",
+                    mat4: "",
+                    prix: "10 pièces d'argent",
+                    utility: "Repas nourrissant",
+                    image: "ragout.png"
+                },
+                {
+                    category: "Plats",
+                    type: "Tarte aux pommes",
+                    status: 2,
+                    mat1: "Pomme",
+                    mat2: "Pain",
+                    mat3: "",
+                    mat4: "",
+                    prix: "8 pièces d'argent",
+                    utility: "Dessert sucré",
+                    image: "tarte_pomme.png"
                 }
             ];
 
@@ -122,7 +154,9 @@
                         
                         if (hasMaterials) {
                             let materialValues = [item.mat1, item.mat2, item.mat3, item.mat4].filter(mat => mat);
-                            rowContent += materialValues.map(mat => `<td>${mat}</td>`).join('');
+                            rowContent += materialValues.map(mat => `
+                                <td>${mat} <img src="images/${materialConfig[mat] || 'default.png'}" alt="${mat}" width="30"></td>
+                            `).join('');
                         }
                         
                         rowContent += `
