@@ -166,10 +166,18 @@
                         <th>Statut</th>
                         <th>Image</th>
                         <th>Type</th>
+                    `;
+                    
+                    let maxMaterials = Math.max(...categoryItems.map(item => [item.mat1, item.mat2, item.mat3, item.mat4].filter(mat => mat).length));
+                    
+                    for (let i = 0; i < maxMaterials; i++) {
+                        headerRow += `<th>Matériau ${i + 1}</th>`;
+                    }
+                    
+                    headerRow += `
                         <th>Prix</th>
                         <th>Utilité</th>
-                    `;
-                    headerRow += `</tr>`;
+                    </tr>`;
                     table.innerHTML = headerRow;
                     
                     let tableBody = document.createElement("tbody");
@@ -182,10 +190,12 @@
                         `;
                         
                         let materialValues = [item.mat1, item.mat2, item.mat3, item.mat4].filter(mat => mat);
-                        if (materialValues.length > 0) {
-                            rowContent += materialValues.map(mat => `
-                                <td class="material-container">${mat} <img src="images/${materialConfig[mat] || 'default.png'}" alt="${mat}" width="30"></td>
-                            `).join('');
+                        materialValues.forEach(mat => {
+                            rowContent += `<td class="material-container">${mat} <img src="images/${materialConfig[mat] || 'default.png'}" alt="${mat}" width="30"></td>`;
+                        });
+                        
+                        for (let i = materialValues.length; i < maxMaterials; i++) {
+                            rowContent += `<td></td>`;
                         }
                         
                         rowContent += `
