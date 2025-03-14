@@ -66,15 +66,17 @@
                 "Copper Ingot": "inv_ingot_02.png",
                 "Iron Ingot": "inv_ingot_iron.png",
                 "Or Ingot": "inv_ingot_03.png",
+
                 // Bucheron
-                // Herboriste
-                "Buches T1": "inv_tradeskillitem_03",
-                "Buches T2": "inv_tradeskillitem_03",
-                "Buches T3": "inv_tradeskillitem_03.png",
+                "Bois de chêne": "inv_tradeskillitem_03",
+                "Bois d'érable": "inv_tradeskillitem_03",
+                "Bois de bouleau": "inv_tradeskillitem_03.png",
                 
-                "Planches T1": "inv_tradeskillitem_01.png",
-                "Planches T2": "inv_tradeskillitem_012.png",
-                "Planches T3": "inv_tradeskillitem_011.png",
+                "Planches de chêne": "inv_tradeskillitem_01.png",
+                "Planches d'érable": "inv_tradeskillitem_012.png",
+                "Planches de bouleau": "inv_tradeskillitem_011.png",
+
+                // Herboriste
             };
 
             // Configuration des stocks avec catégories
@@ -155,7 +157,7 @@
                 // BUCHERON
                 {
                     category: "Subjob : Bucheron",
-                    type: "Buches T1",
+                    type: "Buches de chêne",
                     status: 1,
                     mat1: "",
                     mat2: "",
@@ -167,7 +169,7 @@
                 },
                 {
                     category: "Subjob : Bucheron",
-                    type: "Buches T2",
+                    type: "Buches Bois d'érable",
                     status: 2,
                     mat1: "",
                     mat2: "",
@@ -179,7 +181,7 @@
                 },
                 {
                     category: "Subjob : Bucheron",
-                    type: "Buches T3",
+                    type: "Bois de bouleau",
                     status: 1,
                     mat1: "",
                     mat2: "",
@@ -192,7 +194,7 @@
 
                 {
                     category: "Subjob : Bucheron",
-                    type: "Planches T1",
+                    type: "Planches de chêne",
                     status: 2,
                     mat1: "",
                     mat2: "",
@@ -204,7 +206,7 @@
                 },
                 {
                     category: "Subjob : Bucheron",
-                    type: "Planches T2",
+                    type: "Planches d'érable",
                     status: 2,
                     mat1: "",
                     mat2: "",
@@ -216,7 +218,7 @@
                 },
                 {
                     category: "Subjob : Bucheron",
-                    type: "Planches T3",
+                    type: "Planches bouleau",
                     status: 2,
                     mat1: "",
                     mat2: "",
@@ -226,7 +228,154 @@
                     utility: "N/A",
                     image: "inv_tradeskillitem_011.png"
                 },
-
+                // Herboriste
+                // T1
+                {
+                category: "Ressources",
+                    type: "Mouse",
+                    status: 2,
+                    mat1: "",
+                    mat2: "",
+                    mat3: "",
+                    mat4: "",
+                    prix: "N/A",
+                    utility: "Utile pour faire des potions",
+                    image: "inv_misc_herb_adderstounge_stem.png"
+                },
+                {
+                category: "Ressources",
+                    type: "Baisé d'hivers",
+                    status: 2,
+                    mat1: "",
+                    mat2: "",
+                    mat3: "",
+                    mat4: "",
+                    prix: "N/A",
+                    utility: "Utile pour faire des potions",
+                    image: "inv_misc_herb_winterskiss.png"
+                },
+                {
+                category: "Ressources",
+                    type: "Vulpille",
+                    status: 2,
+                    mat1: "",
+                    mat2: "",
+                    mat3: "",
+                    mat4: "",
+                    prix: "N/A",
+                    utility: "Utile pour faire des potions",
+                    image: "inv_herbalism_70_foxflower.png"
+                },
+                {
+                category: "Ressources",
+                    type: "Death Blossom",
+                    status: 2,
+                    mat1: "",
+                    mat2: "",
+                    mat3: "",
+                    mat4: "",
+                    prix: "N/A",
+                    utility: "Utile pour faire des potions",
+                    image: "inv_misc_herb_deathblossom.png"
+                },
+                // T2
+                {
+                category: "Ressources",
+                    type: "Songefeuille",
+                    status: 2,
+                    mat1: "",
+                    mat2: "",
+                    mat3: "",
+                    mat4: "",
+                    prix: "N/A",
+                    utility: "Utile pour faire des potions",
+                    image: "inv_herbalism_70_dreamleaf.png"
+                },
+                {
+                category: "Ressources",
+                    type: "Rose lumétoile",
+                    status: 2,
+                    mat1: "",
+                    mat2: "",
+                    mat3: "",
+                    mat4: "",
+                    prix: "N/A",
+                    utility: "Utile pour faire des potions",
+                    image: "inv_herbalism_70_starlightrosepetals.png"
+                },
+                {
+                category: "Ressources",
+                    type: "Aethril",
+                    status: 2,
+                    mat1: "",
+                    mat2: "",
+                    mat3: "",
+                    mat4: "",
+                    prix: "N/A",
+                    utility: "Utile pour faire des potions",
+                    image: "inv_herbalism_70_aethril.png"
+                },
+                {
+                category: "Ressources",
+                    type: "Astralée",
+                    status: 2,
+                    mat1: "",
+                    mat2: "",
+                    mat3: "",
+                    mat4: "",
+                    prix: "N/A",
+                    utility: "Utile pour faire des potions",
+                    image: "inv_misc_herb_astralglory.png"
+                },
+                //T3
+                {
+                category: "Ressources",
+                    type: "Fjarnskaggl",
+                    status: 2,
+                    mat1: "",
+                    mat2: "",
+                    mat3: "",
+                    mat4: "",
+                    prix: "N/A",
+                    utility: "Utile pour faire des potions",
+                    image: "inv_herbalism_70_fjarnskaggl.png"
+                },
+                {
+                category: "Ressources",
+                    type: "Ancoracée",
+                    status: 2,
+                    mat1: "",
+                    mat2: "",
+                    mat3: "",
+                    mat4: "",
+                    prix: "N/A",
+                    utility: "Utile pour faire des potions",
+                    image: "inv_misc_herb_anchorweed.png"
+                },
+                {
+                category: "Ressources",
+                    type: "Glaurier",
+                    status: 2,
+                    mat1: "",
+                    mat2: "",
+                    mat3: "",
+                    mat4: "",
+                    prix: "N/A",
+                    utility: "Utile pour faire des potions",
+                    image: "inv_misc_herb_dreamingglory.png"
+                },
+                {
+                category: "Ressources",
+                    type: "Lotus caméléon",
+                    status: 2,
+                    mat1: "",
+                    mat2: "",
+                    mat3: "",
+                    mat4: "",
+                    prix: "N/A",
+                    utility: "Utile pour faire des potions",
+                    image: "inv_misc_herb_chamlotus.png"
+                },
             ];
 
             function getStatusClass(status) {
