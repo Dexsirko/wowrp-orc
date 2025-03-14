@@ -49,7 +49,7 @@
                     category: "Minerais",
                     type: "Cooper Ore",
                     status: 2,
-                    mat1: "test",
+                    mat1: "",
                     mat2: "",
                     mat3: "",
                     mat4: "",
@@ -62,8 +62,8 @@
                     type: "Pomme Rouge",
                     status: 2,
                     mat1: "Pomme",
-                    mat2: "test",
-                    mat3: "test",
+                    mat2: "",
+                    mat3: "",
                     mat4: "",
                     prix: "2 pièces d'or",
                     utility: "Snack",
@@ -93,11 +93,9 @@
                     
                     let table = document.createElement("table");
                     let headerRow = `<tr>
+                        <th>Statut</th>
                         <th>Image</th>
                         <th>Type</th>
-                        <th>Statut</th>
-                        <th>Prix</th>
-                        <th>Utilité</th>
                     `;
                     
                     if (hasMaterials) {
@@ -107,24 +105,30 @@
                         headerRow += materialHeaders.map(header => `<th>${header}</th>`).join('');
                     }
                     
-                    headerRow += `</tr>`;
+                    headerRow += `
+                        <th>Prix</th>
+                        <th>Utilité</th>
+                    </tr>`;
                     table.innerHTML = headerRow;
                     
                     let tableBody = document.createElement("tbody");
                     categoryItems.forEach(item => {
                         let row = document.createElement("tr");
                         let rowContent = `
+                            <td class="${getStatusClass(item.status)}">${item.status === 2 ? 'Bon' : item.status === 1 ? 'Moyen' : 'Pénurie'}</td>
                             <td><img src="images/${item.image}" alt="${item.type}" width="50"></td>
                             <td>${item.type}</td>
-                            <td class="${getStatusClass(item.status)}">${item.status === 2 ? 'Bon' : item.status === 1 ? 'Moyen' : 'Pénurie'}</td>
-                            <td>${item.prix}</td>
-                            <td>${item.utility}</td>
                         `;
                         
                         if (hasMaterials) {
                             let materialValues = [item.mat1, item.mat2, item.mat3, item.mat4].filter(mat => mat);
                             rowContent += materialValues.map(mat => `<td>${mat}</td>`).join('');
                         }
+                        
+                        rowContent += `
+                            <td>${item.prix}</td>
+                            <td>${item.utility}</td>
+                        `;
                         
                         row.innerHTML = rowContent;
                         tableBody.appendChild(row);
