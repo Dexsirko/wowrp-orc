@@ -39,34 +39,47 @@
             background: #F44336;
             color: white;
         }
+        .weak {
+            background: #FF5722;
+            color: white;
+        }
     </style>
 </head>
 <body>
     <h1>Gestion des Stocks</h1>
+    <h2>Configuration</h2>
+    <p>Les images des matériaux et des types sont définies dans une configuration externe.</p>
+    
     <table>
         <tr>
+            <th>Image</th>
             <th>Type</th>
             <th>Matériaux A</th>
             <th>Matériaux B</th>
             <th>Matériaux C</th>
             <th>Matériaux D</th>
+            <th>Statut</th>
             <th>Prix</th>
             <th>Utilité</th>
         </tr>
         <tr>
+            <td><img src="images/type1.png" alt="Produit 1" width="50"></td>
             <td>Produit 1</td>
-            <td class="green">Bon</td>
-            <td class="yellow">Moyen</td>
-            <td class="red">Pénurie</td>
+            <td><img src="images/creme.png" alt="Crème" width="30"> Bon</td>
+            <td><img src="images/metal.png" alt="Métal" width="30"> Moyen</td>
+            <td><img src="images/bois.png" alt="Bois" width="30"> Pénurie</td>
+            <td><img src="images/plastique.png" alt="Plastique" width="30"> Bon</td>
             <td class="green">Bon</td>
             <td>XX €</td>
             <td>Usage 1</td>
         </tr>
         <tr>
+            <td><img src="images/type2.png" alt="Produit 2" width="50"></td>
             <td>Produit 2</td>
-            <td class="red">Pénurie</td>
-            <td class="green">Bon</td>
-            <td class="green">Bon</td>
+            <td><img src="images/creme.png" alt="Crème" width="30"> Pénurie</td>
+            <td><img src="images/metal.png" alt="Métal" width="30"> Bon</td>
+            <td><img src="images/bois.png" alt="Bois" width="30"> Bon</td>
+            <td><img src="images/plastique.png" alt="Plastique" width="30"> Moyen</td>
             <td class="yellow">Moyen</td>
             <td>XX €</td>
             <td>Usage 2</td>
