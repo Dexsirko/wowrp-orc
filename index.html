@@ -52,20 +52,10 @@
                     mat1: "",
                     mat2: "",
                     mat3: "",
-                    prix: 5,
+                    mat4: "",
+                    prix: "5pa & 3 pc",
                     utility: "Faire des armes & outils",
-                    image: "inv_potion_70.png"
-                },
-                {
-                    category: "Herbes",
-                    type: "Persil",
-                    status: 1,
-                    mat1: "Persil",
-                    mat2: "",
-                    mat3: "",
-                    prix: 4,
-                    utility: "Assaisonnement",
-                    image: "inv_potion_70.png"
+                    image: "inv_ore_copper_01.png"
                 },
                 {
                     category: "Fruits",
@@ -74,20 +64,10 @@
                     mat1: "Pomme",
                     mat2: "",
                     mat3: "",
-                    prix: 2,
+                    mat4: "",
+                    prix: "2 pièces d'or",
                     utility: "Snack",
                     image: "pomme.png"
-                },
-                {
-                    category: "Fruits",
-                    type: "Banane",
-                    status: 0,
-                    mat1: "Banane",
-                    mat2: "",
-                    mat3: "",
-                    prix: 3,
-                    utility: "Énergie",
-                    image: "banane.png"
                 }
             ];
 
@@ -107,33 +87,46 @@
                     let categorySection = document.createElement("div");
                     categorySection.innerHTML = `<h2>${category}</h2>`;
                     
+                    let categoryItems = stockConfig.filter(item => item.category === category);
+                    
+                    let hasMaterials = categoryItems.some(item => item.mat1 || item.mat2 || item.mat3 || item.mat4);
+                    
                     let table = document.createElement("table");
-                    table.innerHTML = `
-                        <tr>
-                            <th>Image</th>
-                            <th>Type</th>
-                            <th>Matériau A</th>
-                            <th>Matériau B</th>
-                            <th>Matériau C</th>
-                            <th>Statut</th>
-                            <th>Prix</th>
-                            <th>Utilité</th>
-                        </tr>
+                    let headerRow = `<tr>
+                        <th>Image</th>
+                        <th>Type</th>
+                        <th>Statut</th>
+                        <th>Prix</th>
+                        <th>Utilité</th>
                     `;
                     
+                    if (hasMaterials) {
+                        let materialHeaders = ['Matériau A', 'Matériau B', 'Matériau C', 'Matériau D'].filter((_, index) =>
+                            categoryItems.some(item => item[`mat${index + 1}`])
+                        );
+                        headerRow += materialHeaders.map(header => `<th>${header}</th>`).join('');
+                    }
+                    
+                    headerRow += `</tr>`;
+                    table.innerHTML = headerRow;
+                    
                     let tableBody = document.createElement("tbody");
-                    stockConfig.filter(item => item.category === category).forEach(item => {
+                    categoryItems.forEach(item => {
                         let row = document.createElement("tr");
-                        row.innerHTML = `
+                        let rowContent = `
                             <td><img src="images/${item.image}" alt="${item.type}" width="50"></td>
                             <td>${item.type}</td>
-                            <td>${item.mat1}</td>
-                            <td>${item.mat2}</td>
-                            <td>${item.mat3}</td>
                             <td class="${getStatusClass(item.status)}">${item.status === 2 ? 'Bon' : item.status === 1 ? 'Moyen' : 'Pénurie'}</td>
-                            <td>${item.prix} €</td>
+                            <td>${item.prix}</td>
                             <td>${item.utility}</td>
                         `;
+                        
+                        if (hasMaterials) {
+                            let materialValues = [item.mat1, item.mat2, item.mat3, item.mat4].filter(mat => mat);
+                            rowContent += materialValues.map(mat => `<td>${mat}</td>`).join('');
+                        }
+                        
+                        row.innerHTML = rowContent;
                         tableBody.appendChild(row);
                     });
                     
