@@ -10,13 +10,14 @@
             margin: 20px;
             background-color: #f4f4f4;
         }
-        h1 {
+        h1, h2 {
             color: #333;
         }
         table {
             width: 100%;
             border-collapse: collapse;
             background: #fff;
+            margin-bottom: 20px;
         }
         th, td {
             border: 1px solid #ddd;
@@ -39,34 +40,54 @@
             background: #F44336;
             color: white;
         }
-        .weak {
-            background: #FF5722;
-            color: white;
-        }
     </style>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // Configuration des stocks
+            // Configuration des stocks avec catégories
             const stockConfig = [
                 {
-                    type: "Ribs aux carottes",
-                    status: 1, // 0 = Pénurie, 1 = Moyen, 2 = Bon
-                    mat1: "Ribs",
-                    mat2: "Carottes",
+                    category: "Herbes",
+                    type: "Basilic frais",
+                    status: 2,
+                    mat1: "Basilic",
+                    mat2: "",
                     mat3: "",
-                    prix: 13,
-                    utility: "je sais pas pourquoi",
-                    image: "ribs.png"
+                    prix: 5,
+                    utility: "Assaisonnement",
+                    image: "basilic.png"
                 },
                 {
-                    type: "Soupe de légumes",
+                    category: "Herbes",
+                    type: "Persil",
+                    status: 1,
+                    mat1: "Persil",
+                    mat2: "",
+                    mat3: "",
+                    prix: 4,
+                    utility: "Assaisonnement",
+                    image: "persil.png"
+                },
+                {
+                    category: "Fruits",
+                    type: "Pomme Rouge",
                     status: 2,
-                    mat1: "Tomates",
-                    mat2: "Carottes",
-                    mat3: "Poireaux",
-                    prix: 9,
-                    utility: "Plat réconfortant",
-                    image: "soupe.png"
+                    mat1: "Pomme",
+                    mat2: "",
+                    mat3: "",
+                    prix: 2,
+                    utility: "Snack",
+                    image: "pomme.png"
+                },
+                {
+                    category: "Fruits",
+                    type: "Banane",
+                    status: 0,
+                    mat1: "Banane",
+                    mat2: "",
+                    mat3: "",
+                    prix: 3,
+                    utility: "Énergie",
+                    image: "banane.png"
                 }
             ];
 
@@ -77,21 +98,48 @@
             }
 
             function renderStockTable() {
-                let tableBody = document.getElementById("stockTableBody");
-                tableBody.innerHTML = "";
-                stockConfig.forEach(item => {
-                    let row = document.createElement("tr");
-                    row.innerHTML = `
-                        <td><img src="images/${item.image}" alt="${item.type}" width="50"></td>
-                        <td>${item.type}</td>
-                        <td>${item.mat1}</td>
-                        <td>${item.mat2}</td>
-                        <td>${item.mat3}</td>
-                        <td class="${getStatusClass(item.status)}">${item.status === 2 ? 'Bon' : item.status === 1 ? 'Moyen' : 'Pénurie'}</td>
-                        <td>${item.prix} €</td>
-                        <td>${item.utility}</td>
+                let container = document.getElementById("stockContainer");
+                container.innerHTML = "";
+                
+                let categories = [...new Set(stockConfig.map(item => item.category))];
+                
+                categories.forEach(category => {
+                    let categorySection = document.createElement("div");
+                    categorySection.innerHTML = `<h2>${category}</h2>`;
+                    
+                    let table = document.createElement("table");
+                    table.innerHTML = `
+                        <tr>
+                            <th>Image</th>
+                            <th>Type</th>
+                            <th>Matériau A</th>
+                            <th>Matériau B</th>
+                            <th>Matériau C</th>
+                            <th>Statut</th>
+                            <th>Prix</th>
+                            <th>Utilité</th>
+                        </tr>
                     `;
-                    tableBody.appendChild(row);
+                    
+                    let tableBody = document.createElement("tbody");
+                    stockConfig.filter(item => item.category === category).forEach(item => {
+                        let row = document.createElement("tr");
+                        row.innerHTML = `
+                            <td><img src="images/${item.image}" alt="${item.type}" width="50"></td>
+                            <td>${item.type}</td>
+                            <td>${item.mat1}</td>
+                            <td>${item.mat2}</td>
+                            <td>${item.mat3}</td>
+                            <td class="${getStatusClass(item.status)}">${item.status === 2 ? 'Bon' : item.status === 1 ? 'Moyen' : 'Pénurie'}</td>
+                            <td>${item.prix} €</td>
+                            <td>${item.utility}</td>
+                        `;
+                        tableBody.appendChild(row);
+                    });
+                    
+                    table.appendChild(tableBody);
+                    categorySection.appendChild(table);
+                    container.appendChild(categorySection);
                 });
             }
             
@@ -101,19 +149,6 @@
 </head>
 <body>
     <h1>Gestion des Stocks</h1>
-    
-    <table>
-        <tr>
-            <th>Image</th>
-            <th>Type</th>
-            <th>Matériau A</th>
-            <th>Matériau B</th>
-            <th>Matériau C</th>
-            <th>Statut</th>
-            <th>Prix</th>
-            <th>Utilité</th>
-        </tr>
-        <tbody id="stockTableBody"></tbody>
-    </table>
+    <div id="stockContainer"></div>
 </body>
 </html>
