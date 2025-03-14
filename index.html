@@ -77,6 +77,9 @@
                 "Planches de bouleau": "inv_tradeskillitem_011.png",
 
                 // Herboriste
+                "x5 Mouse": "inv_misc_herb_adderstounge_stem.png",
+                "x5 Baisé d'hiver": "inv_misc_herb_winterskiss.png",
+                "x5 Vulpille": "inv_herbalism_70_foxflower.png",
             };
 
             // Configuration des stocks avec catégories
@@ -244,7 +247,7 @@
                 },
                 {
                 category: "Ressources",
-                    type: "Baisé d'hivers",
+                    type: "Baisé d'hiver",
                     status: 2,
                     mat1: "",
                     mat2: "",
@@ -376,6 +379,20 @@
                     utility: "Utile pour faire des potions",
                     image: "inv_misc_herb_chamlotus.png"
                 },
+
+                // Potions
+                {
+                category: "Potions",
+                    type: "Elexir de Défence",
+                    status: 2,
+                    mat1: "x5 Mouse",
+                    mat2: "x5 Baisé d'hiver",
+                    mat3: "x5 Vulpille",
+                    mat4: "",
+                    prix: "N/A",
+                    utility: "Utile pour faire des potions",
+                    image: "inv_potion_64.png"
+                },
             ];
 
             function getStatusClass(status) {
@@ -405,9 +422,8 @@
                     
                     let maxMaterials = Math.max(...categoryItems.map(item => [item.mat1, item.mat2, item.mat3, item.mat4].filter(mat => mat).length));
                     
-                    for (let i = 0; i < maxMaterials; i++) {
-                        headerRow += `<th>Matériau ${i + 1}</th>`;
-                    }
+                    headerRow += `<th>Matériaux</th>`;
+
                     
                     headerRow += `
                         <th>Prix</th>
