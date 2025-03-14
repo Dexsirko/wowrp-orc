@@ -45,12 +45,12 @@
         document.addEventListener("DOMContentLoaded", function() {
             // Configuration des matériaux
             const materialConfig = {
-                "Pomme": "pomme.png",
-                "Carotte": "carotte.png",
-                "Viande": "viande.png",
-                "Pain": "pain.png",
-                "Copper Ingot": "inv_ingot_02.png",
                 "Cooper Ore": "inv_ore_copper_01.png",
+                "Iron Ore": "inv_ore_iron_01.png",
+                "Or Ore": "inv_ore_gold_01.png",
+                "Copper Ingot": "inv_ingot_02.png",
+                "Iron Ingot": "inv_ingot_iron.png",
+                "Or Ingot": "inv_ingot_03.png",
             };
 
             // Configuration des stocks avec catégories
@@ -58,7 +58,7 @@
                 {
                     category: "Minerais",
                     type: "Cooper Ore",
-                    status: 2,
+                    status: 1,
                     mat1: "",
                     mat2: "",
                     mat3: "",
@@ -66,6 +66,30 @@
                     prix: "5pa & 3 pc",
                     utility: "Faire des armes & outils",
                     image: "inv_ore_copper_01.png"
+                },
+                                {
+                    category: "Minerais",
+                    type: "Iron Ore",
+                    status: 2,
+                    mat1: "",
+                    mat2: "",
+                    mat3: "",
+                    mat4: "",
+                    prix: "5pa & 3 pc",
+                    utility: "Faire des armes & outils",
+                    image: "inv_ore_iron_01.png"
+                },
+                                {
+                    category: "Minerais",
+                    type: "Or Ore",
+                    status: 0,
+                    mat1: "",
+                    mat2: "",
+                    mat3: "",
+                    mat4: "",
+                    prix: "5pa & 3 pc",
+                    utility: "Faire des armes & outils",
+                    image: "inv_ore_gold_01.png"
                 },
                 {
                     category: "Minerais",
@@ -79,42 +103,31 @@
                     utility: "Faire des armes & outils",
                     image: "inv_ore_copper_01.png"
                 },
-                {
-                    category: "Fruits",
-                    type: "Pomme Rouge",
+                                {
+                    category: "Minerais",
+                    type: "Iron Ingot",
                     status: 2,
-                    mat1: "Pomme",
+                    mat1: "Iron Ore",
                     mat2: "",
                     mat3: "",
                     mat4: "",
-                    prix: "2 pièces d'or",
-                    utility: "Snack",
-                    image: "pomme.png"
+                    prix: "5pa & 3 pc",
+                    utility: "Faire des armes & outils",
+                    image: "inv_ingot_iron.png"
                 },
-                {
-                    category: "Plats",
-                    type: "Ragoût de viande",
-                    status: 1,
-                    mat1: "Viande",
-                    mat2: "Carotte",
-                    mat3: "Pain",
-                    mat4: "",
-                    prix: "10 pièces d'argent",
-                    utility: "Repas nourrissant",
-                    image: "ragout.png"
-                },
-                {
-                    category: "Plats",
-                    type: "Tarte aux pommes",
+                                {
+                    category: "Minerais",
+                    type: "Or Ingot",
                     status: 2,
-                    mat1: "Pomme",
-                    mat2: "Pain",
+                    mat1: "Or Ore",
+                    mat2: "",
                     mat3: "",
                     mat4: "",
-                    prix: "8 pièces d'argent",
-                    utility: "Dessert sucré",
-                    image: "tarte_pomme.png"
-                }
+                    prix: "5pa & 3 pc",
+                    utility: "Faire des armes & outils",
+                    image: "inv_ingot_03.png"
+                },
+
             ];
 
             function getStatusClass(status) {
