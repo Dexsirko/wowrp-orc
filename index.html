@@ -40,6 +40,15 @@
             background: #F44336;
             color: white;
         }
+        .material-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .material-container img {
+            margin-left: 5px;
+            vertical-align: middle;
+        }
     </style>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -152,26 +161,15 @@
                     
                     let categoryItems = stockConfig.filter(item => item.category === category);
                     
-                    let hasMaterials = categoryItems.some(item => item.mat1 || item.mat2 || item.mat3 || item.mat4);
-                    
                     let table = document.createElement("table");
                     let headerRow = `<tr>
                         <th>Statut</th>
                         <th>Image</th>
                         <th>Type</th>
-                    `;
-                    
-                    if (hasMaterials) {
-                        let materialHeaders = ['Matériau A', 'Matériau B', 'Matériau C', 'Matériau D'].filter((_, index) =>
-                            categoryItems.some(item => item[`mat${index + 1}`])
-                        );
-                        headerRow += materialHeaders.map(header => `<th>${header}</th>`).join('');
-                    }
-                    
-                    headerRow += `
                         <th>Prix</th>
                         <th>Utilité</th>
-                    </tr>`;
+                    `;
+                    headerRow += `</tr>`;
                     table.innerHTML = headerRow;
                     
                     let tableBody = document.createElement("tbody");
@@ -183,10 +181,10 @@
                             <td>${item.type}</td>
                         `;
                         
-                        if (hasMaterials) {
-                            let materialValues = [item.mat1, item.mat2, item.mat3, item.mat4].filter(mat => mat);
+                        let materialValues = [item.mat1, item.mat2, item.mat3, item.mat4].filter(mat => mat);
+                        if (materialValues.length > 0) {
                             rowContent += materialValues.map(mat => `
-                                <td>${mat} <img src="images/${materialConfig[mat] || 'default.png'}" alt="${mat}" width="30"></td>
+                                <td class="material-container">${mat} <img src="images/${materialConfig[mat] || 'default.png'}" alt="${mat}" width="30"></td>
                             `).join('');
                         }
                         
